@@ -318,7 +318,7 @@ img { display: block; max-width: 100%; height: auto; }
 }
 
 /* ---------- Base ---------- */
-html, body { background: var(--bg); color: var(--fg); }
+html, body { background: var(--bg); color: var(--fg); overflow-x: clip; }
 body {
   font-family: var(--font-sans);
   font-weight: 400;
@@ -949,7 +949,7 @@ body:not(.js-ready) .section-title::after { width: 72px; }
 /* ---------- Definition list (会社概要) ---------- */
 .dl {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: minmax(140px, 200px) 1fr;
   border-top: 1px solid var(--line);
 }
 .dl > div {
@@ -958,6 +958,9 @@ body:not(.js-ready) .section-title::after { width: 72px; }
 .dl dt, .dl dd {
   padding: 24px 8px;
   border-bottom: 1px solid var(--line);
+  overflow-wrap: break-word;
+  word-break: break-word;
+  min-width: 0;
 }
 .dl dt {
   font-family: var(--font-serif);
@@ -983,7 +986,7 @@ body:not(.js-ready) .section-title::after { width: 72px; }
 }
 .award-row {
   display: grid;
-  grid-template-columns: 120px 1fr auto;
+  grid-template-columns: 120px minmax(0, 1fr) minmax(0, auto);
   align-items: baseline;
   gap: 0 24px;
   padding: 20px 8px;
@@ -1015,7 +1018,8 @@ body:not(.js-ready) .section-title::after { width: 72px; }
   color: var(--fg-muted);
   letter-spacing: 0.06em;
   text-align: right;
-  white-space: nowrap;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 @media (max-width: 720px) {
   .award-row { grid-template-columns: 1fr; gap: 4px; }
@@ -1131,7 +1135,9 @@ body:not(.js-ready) .section-title::after { width: 72px; }
   font-size: 12px;
   color: #a0aab5;
   letter-spacing: 0.05em;
+  overflow-wrap: break-word;
 }
+.footer-meta span { overflow-wrap: break-word; min-width: 0; }
 .footer-meta a { color: #a0aab5; }
 .footer-meta a:hover { color: #fff; }
 @media (max-width: 720px) {
